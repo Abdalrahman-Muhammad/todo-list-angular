@@ -1,0 +1,54 @@
+<div class="text-center p-5 gradient-custom">
+  <div class="gradient-custom vh-100 d-flex flex-column justify-content-center">
+    <div class="container py-5 bg-light rounded-5">
+      <h1 class="lead fw-bold fs-1 rounded">TODO LIST</h1>
+      <form action="">
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col-8">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Add a task"
+                  name="taskName"
+                  [(ngModel)]="taskName"
+                />
+                <button
+                  type="submit"
+                  class="btn btn-info text-light"
+                  (click)="addTask()"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+          <span *ngIf="showError" class="text-danger">Please enter Task</span>
+          <div class="row mt-3">
+            <div class="col">
+              <ul class="list-group">
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center"
+                  *ngFor="let task of tasks; let i = index"
+                >
+                  <span class="fs-3">{{ task }}</span>
+                  <button
+                    type="button"
+                    class="btn btn-danger text-light"
+                    (click)="removeTask(i)"
+                  >
+                    Remove
+                  </button>
+                </li>
+              </ul>
+              <div class="alert alert-info mt-3" *ngIf="tasks.length === 0">
+                No tasks added.
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
